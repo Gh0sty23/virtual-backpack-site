@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./App.css";
 
 const Homepage = () => {
@@ -12,13 +12,13 @@ const Homepage = () => {
       {page === 1 && (
         <div className="page1">
           <button onClick={() => setPage(2)} className="backpack-btn">
-            <img src="/backpack.png" alt="Virtual Backpack" className="backpack-img" />
+            <img src="./virtual-backpack-site/backpack.png" alt="Virtual Backpack" className="backpack-img" />
           </button>
           <h1 className="title">Virtual Backpack</h1>
         </div>
       )}
 
-     
+
       {page === 2 && (
         <div className="page2">
           <h2>Open an App:</h2>
