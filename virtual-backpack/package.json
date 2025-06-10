@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Gh0sty23.github.io/Virtual-backpack",
+  "homepage": "https://github.com/Gh0sty23/virtual-backpack-site",
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
