@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route, Navigate} from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom"
 import './App.css'
 import ToDoApp from "./components/todo/ToDoComponent.tsx"
 import {v4 as uuidV4} from "uuid";
@@ -101,7 +101,7 @@ function App() {
         })
     } //terrible code. I am so sorry to whoever wants to modifty and or read this stuff. One of the members (Gh0sty23) did not know how to code in react
   return (
-    <HashRouter>
+    <BrowserRouter>
       <div className="app-container">
         <div className="main-content">
           <Routes>
@@ -136,7 +136,7 @@ function App() {
           </Routes>
         </div>
       </div>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 
