@@ -22,6 +22,10 @@ export function NoteForm({ onSubmit, onAddTag, availableTags, title = "", markdo
     e.preventDefault()
     const cleanedTitle = titleRef.current!.value.trim();
     const cleanedMarkdown = markdownRef.current!.value.trim();
+
+    const now = new Date();
+    const date = now.toISOString().split("T")[0]; // e.g., "2025-06-29"
+    const time = now.toTimeString().split(" ")[0]; // e.g., "13:45:20"
     if (cleanedTitle === '' || cleanedMarkdown === '') {
       alert('Input cannot be empty!!');
     } else {
@@ -29,6 +33,10 @@ export function NoteForm({ onSubmit, onAddTag, availableTags, title = "", markdo
         title: cleanedTitle,
         markdown: cleanedMarkdown,
         tags: selectedTags,
+        dateCreated: date,
+        timeCreated: time,
+        dateLastUpdated: "",
+        timeLastUpdate: "",
       })
       navigate("/notes");
     }
