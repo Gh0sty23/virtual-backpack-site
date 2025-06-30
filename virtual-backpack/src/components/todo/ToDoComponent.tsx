@@ -9,6 +9,7 @@ import Sidebar from '../Sidebar/Sidebar'
 function App() {
   const [todos, setTodos] = useState<any[]>([]);
   const addTodo = (name: any, priority: any, date: any) => {
+    name.trim();
     const newTodos = [
       ...todos,
       { id: crypto.randomUUID(), taskName: name, taskPriority: priority, taskDate: date, completed: false, isEditing: false },
@@ -17,11 +18,11 @@ function App() {
     setTodos(newTodos);
     localStorage.setItem('todos', JSON.stringify(newTodos));
   }
-  //const editTask = (taskName: any, taskPriority: any, taskDate: any, id: any) => {
-  //const newTodos = todos.map(todo => todo.id === id ? {...todo, taskName, taskPriority, taskDate, isEditing: !todo.isEditing} : todo);
+  // const editTask = (taskName: any, taskPriority: any, taskDate: any, id: any) => {
+  // const newTodos = todos.map(todo => todo.id === id ? { ...todo, taskName, taskPriority, taskDate, isEditing: !todo.isEditing } : todo);
   //setTodos(newTodos);
   //localStorage.setItem('todos', JSON.stringify(newTodos));
-  //  }
+  ///}
   //for edit to do
   // const [show, setShow] = useState(false);
   // const handleShow = setShow(true);

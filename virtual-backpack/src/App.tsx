@@ -20,6 +20,10 @@ export type Note = {
 
 export type RawNote = {
   id: string
+  dateCreated: string
+  timeCreated: string
+  dateLastUpdated: string
+  timeLastCreated: string
 } & RawNoteData
 
 export type RawNoteData = {
@@ -38,15 +42,11 @@ export type NoteData = {
   tags: Tag[]
   dateCreated: string
   timeCreated: string
-  dateLastUpdated: string
-  timeLastUpdate: string
 }
 export type Tag = {
   id: string
   label: string
 }
-export const maxTags = 10;
-export var tagAmount = 0;
 
 function App() {
   const [notes, setNotes] = useLocalStorage<RawNote[]>("NOTES", [])
@@ -70,12 +70,7 @@ function App() {
   }
 
   function addTag(tag: Tag) {
-    if (tagAmount >= maxTags) {
-      return
-    } else {
-      tagAmount = tagAmount + 1
-      setTags(prev => [...prev, tag])
-    }
+    setTags(prev => [...prev, tag])
   }
 
   function onDeleteNote(id: string) {
@@ -115,11 +110,7 @@ function App() {
   }
 
   function deleteTag(id: string) {
-    if (tagAmount == 0) {
-      tagAmount = 0
-    } else {
-      tagAmount = tagAmount - 1
-    }
+
     setTags(prevTags => {
       return prevTags.filter(tag => tag.id !== id)
     })

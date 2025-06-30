@@ -2,7 +2,7 @@ import { FormEvent, useRef, useState } from "react"
 import { Button, Col, Form, Row, Stack } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
 import CreatableReactSelect from "react-select/creatable"
-import { NoteData, Tag, tagAmount, maxTags } from "../../App"
+import { NoteData, Tag } from "../../App"
 import { v4 as uuidV4 } from "uuid"
 
 type NoteFormProps = {
@@ -14,6 +14,7 @@ type NoteFormProps = {
 
 export function NoteForm({ onSubmit, onAddTag, availableTags, title = "", markdown = "", tags = [] }: NoteFormProps) {
   const titleRef = useRef<HTMLInputElement>(null)
+  const maxTags = 10;
   const markdownRef = useRef<HTMLTextAreaElement>(null)
   const [selectedTags, setSelectedTags] = useState<Tag[]>(tags)
   const navigate = useNavigate()
@@ -65,9 +66,9 @@ export function NoteForm({ onSubmit, onAddTag, availableTags, title = "", markdo
                     alert("Cannot create empty tag");
                     return;
                   }
-                  if (tagAmount >= maxTags) {
+                  if (selectedTags.length >= maxTags) {
                     alert("Cannot create more than 10 tags");
-                    return;
+                    return
                   } else {
                     const newTag = { id: uuidV4(), label }
                     onAddTag(newTag)
