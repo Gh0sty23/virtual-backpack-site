@@ -20,10 +20,6 @@ export type Note = {
 
 export type RawNote = {
   id: string
-  dateCreated: string
-  timeCreated: string
-  dateLastUpdated: string
-  timeLastCreated: string
 } & RawNoteData
 
 export type RawNoteData = {
@@ -42,6 +38,8 @@ export type NoteData = {
   tags: Tag[]
   dateCreated: string
   timeCreated: string
+  dateLastUpdated: string
+  timeLastUpdate: string
 }
 export type Tag = {
   id: string
@@ -76,6 +74,7 @@ function App() {
       return
     } else {
       tagAmount = tagAmount + 1
+      setTags(prev => [...prev, tag])
     }
   }
 
