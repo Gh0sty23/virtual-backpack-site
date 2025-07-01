@@ -136,7 +136,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   onDateChange,
   onEventsLoad,
   eventToEdit,
-  //  onEventSelect,
+  //onEventSelect,
   onModalClose,
 }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
