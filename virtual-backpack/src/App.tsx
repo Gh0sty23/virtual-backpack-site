@@ -45,6 +45,8 @@ export type Tag = {
   id: string
   label: string
 }
+export const maxTags = 10;
+export var tagAmount = 0;
 
 function App() {
   const [notes, setNotes] = useLocalStorage<RawNote[]>("NOTES", [])
@@ -68,7 +70,12 @@ function App() {
   }
 
   function addTag(tag: Tag) {
-    setTags(prev => [...prev, tag])
+    if (tags.length >= maxTags) {
+      alert!("Cannot make more than 10 tags!")
+      return
+    } else {
+      setTags(prev => [...prev, tag])
+    }
   }
 
   function onDeleteNote(id: string) {
@@ -108,7 +115,6 @@ function App() {
   }
 
   function deleteTag(id: string) {
-
     setTags(prevTags => {
       return prevTags.filter(tag => tag.id !== id)
     })
