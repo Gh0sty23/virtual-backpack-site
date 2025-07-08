@@ -55,7 +55,7 @@ const CalendarApp: React.FC = () => {
 
       console.log("3. [Frontend] Sending this payload to server:", payload);
 
-      const response = await fetch('https://virtual-backpack-server.onrender.com/', {
+      const response = await fetch('https://virtual-backpack-server.onrender.com/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
