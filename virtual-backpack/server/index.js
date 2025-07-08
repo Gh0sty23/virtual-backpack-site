@@ -9,25 +9,29 @@ const app = express();
 
 // --- Nodemailer Setup ---
 if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.error("FATAL ERROR: EMAIL_USER or EMAIL_PASS is not defined. Check your .env file.");
-    process.exit(1);
+  console.error("FATAL ERROR: EMAIL_USER or EMAIL_PASS is not defined. Check your .env file.");
+  process.exit(1);
 }
 
 // Create a "transporter" which is the object that can send emails
 const transporter = nodemailer.createTransport({
-    service: 'gmail', // Use the Gmail service
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS, // Use the App Password here
-    },
+  service: 'gmail', // Use the Gmail service
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS, // Use the App Password here
+  },
 });
 // --- End of Nodemailer Setup ---
 
 app.use(express.json());
-const frontendURL = 'https://gh0sty23.github.io/virtual-backpack-site/'; 
+const frontendURL = 'https://gh0sty23.github.io';
 
-app.use(cors({ origin: frontendURL })); 
+const corsOptions = {
+  origin: frontendURL,
+  optionsSuccessStauts: 200
+}
 
+app.use(cors(corsOptions));
 const PORT = process.env.PORT || 3001;
 
 app.post('/api/send-email', async (req, res) => {
@@ -38,10 +42,10 @@ app.post('/api/send-email', async (req, res) => {
 
     // Define the email options
     const mailOptions = {
-        from: `"Virtual Backpack" <${process.env.EMAIL_USER}>`, // The "from" field with a name
-        to: to,
-        subject: subject,
-        html: html,
+      from: `"Virtual Backpack" <${process.env.EMAIL_USER}>`, // The "from" field with a name
+      to: to,
+      subject: subject,
+      html: html,
     };
 
     // Send the email using the transporter
