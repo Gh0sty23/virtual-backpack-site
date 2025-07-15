@@ -108,7 +108,7 @@ export function NoteList({
       </Form>
       <Row className="g-3">
         {filteredNotes.map(note => (
-          <Col key={note.id}>
+          <Col xs={12} sm={10} md={8} lg={4} key={note.id}>
             <NoteCard id={note.id} title={note.title} tags={note.tags} />
           </Col>
         ))}
